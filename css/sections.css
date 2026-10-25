@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Sections de la page d'accueil
+   ========================================================================== */
+
+/* --- Accueil (thème sombre) ------------------------------------------------- */
+.accueil { padding-block: var(--espace-6) var(--espace-6); overflow: hidden; }
+.accueil__grille { display: grid; gap: var(--espace-5); align-items: center; }
+.accueil__texte { display: grid; gap: var(--espace-4); max-width: 640px; }
+.accueil__texte .surtitre { margin-bottom: calc(var(--espace-2) * -1); }
+.accueil__actions { display: flex; flex-wrap: wrap; gap: var(--espace-3); }
+.accueil__garanties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-2) var(--espace-4);
+  margin: var(--espace-2) 0 0;
+  padding-top: var(--espace-4);
+  border-top: 1px solid var(--filet);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--encre-douce);
+}
+.accueil__garanties li { display: flex; gap: var(--espace-2); align-items: flex-start; }
+.accueil__garanties .puce { margin-top: 6px; }
+
+.accueil__visuel { display: none; }
+.composition { width: 100%; height: auto; }
+.composition__dalle { fill: var(--fond-alt); }
+.composition__bleu { fill: var(--bleu); }
+.composition__pale { fill: var(--bleu-pale); }
+.composition__violet { fill: var(--violet); }
+.composition__triangles { fill: var(--encre); }
+
+@media (min-width: 900px) {
+  .accueil { padding-block: var(--espace-7); }
+  .accueil__grille { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--espace-6); }
+  .accueil__visuel { display: block; }
+}
+
+/* --- Approche : cyber et IA ------------------------------------------------- */
+.approche { display: grid; gap: var(--espace-5); align-items: center; }
+.approche__texte { display: grid; gap: var(--espace-3); }
+.approche__texte .surtitre { margin-bottom: calc(var(--espace-2) * -1); }
+.approche__colonnes {
+  display: grid;
+  gap: var(--espace-4);
+  margin-top: var(--espace-3);
+  padding-top: var(--espace-4);
+  border-top: 1px solid var(--filet);
+}
+.approche__colonnes > div { display: grid; gap: var(--espace-2); }
+.approche__schema { max-width: 520px; width: 100%; justify-self: center; }
+
+.schema__cyber { fill: var(--bleu-pale); stroke: var(--bleu); stroke-width: 2; }
+.schema__ia { fill: var(--violet-pale); stroke: var(--violet); stroke-width: 2; }
+.schema__centre { fill: var(--encre); }
+.schema__titre { font-family: var(--font); font-size: 22px; font-weight: 600; }
+.schema__titre--cyber { fill: var(--bleu); }
+.schema__titre--ia { fill: var(--violet); }
+.schema__mot { font-family: var(--font); font-size: 14px; fill: var(--encre); }
+.schema__mot--centre { font-weight: 500; fill: var(--fond); }
+
+@media (min-width: 640px) {
+  .approche__colonnes { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1000px) {
+  .approche { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--espace-6); }
+}
+
+/* --- Offre : étapes --------------------------------------------------------- */
+.etapes {
+  display: grid;
+  gap: var(--espace-4);
+  margin: 0 0 var(--espace-6);
+}
+.etape {
+  display: grid;
+  align-content: start;
+  gap: var(--espace-3);
+  padding: var(--espace-4);
+  border-top: 2px solid var(--encre);
+  background: var(--fond-alt);
+  border-radius: 0 0 var(--rayon-l) var(--rayon-l);
+}
+.etape__numero {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--bleu);
+}
+.etape .liste-puces { margin-top: var(--espace-2); }
+
+@media (min-width: 800px) {
+  .etapes { grid-template-columns: 1fr 1fr; }
+  .etape { padding: var(--espace-5); }
+}
+
+/* --- Offre : prestations ---------------------------------------------------- */
+.prestations { margin-bottom: var(--espace-6); }
+.prestations__titre { margin-bottom: var(--espace-4); }
+.grille-prestations {
+  display: grid;
+  gap: 0 var(--espace-5);
+  margin: 0;
+}
+.grille-prestations li {
+  display: grid;
+  gap: var(--espace-1);
+  padding-block: var(--espace-3);
+  border-bottom: 1px solid var(--filet);
+}
+.grille-prestations h4 { font-size: 16px; line-height: 24px; font-weight: 600; margin: 0; }
+.grille-prestations p { color: var(--encre-douce); font-size: 15px; line-height: 24px; }
+
+@media (min-width: 700px) {
+  .grille-prestations { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1000px) {
+  .grille-prestations { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Offre : cycle ---------------------------------------------------------- */
+.cycle {
+  display: grid;
+  gap: var(--espace-4);
+  padding: var(--espace-4);
+  border: 1px solid var(--filet);
+  border-radius: var(--rayon-l);
+}
+.cycle__texte { display: grid; gap: var(--espace-2); max-width: 520px; }
+.cycle__etapes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espace-2);
+  margin: 0;
+  counter-reset: cycle;
+}
+.cycle__etapes li {
+  counter-increment: cycle;
+  padding: 12px var(--espace-3);
+  background: var(--bleu-pale);
+  border-radius: var(--rayon-s);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--encre);
+}
+.cycle__etapes li::before {
+  content: counter(cycle, decimal-leading-zero);
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--bleu);
+}
+
+@media (min-width: 640px) {
+  .cycle__etapes { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1000px) {
+  .cycle { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: center; padding: var(--espace-5); }
+  .cycle__etapes { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* --- Solutions -------------------------------------------------------------- */
+.carte--solution h3 { margin-top: var(--espace-2); }
+
+/* --- Partenaires (thème sombre) --------------------------------------------- */
+.partenaires__grille { display: grid; gap: var(--espace-5); align-items: start; }
+.partenaires__grille > div:first-child { display: grid; gap: var(--espace-3); max-width: 560px; }
+.partenaires__grille > div:first-child .surtitre { margin-bottom: calc(var(--espace-2) * -1); }
+.partenaires__cta { justify-self: start; margin-top: var(--espace-3); }
+
+.partenaires__etapes { display: grid; gap: 0; margin: 0; }
+.partenaires__etapes li {
+  display: flex;
+  gap: var(--espace-4);
+  padding-block: var(--espace-4);
+  border-bottom: 1px solid var(--filet);
+}
+.partenaires__etapes li:first-child { border-top: 1px solid var(--filet); }
+.partenaires__etapes li > div { display: grid; gap: var(--espace-1); }
+.partenaires__numero {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--bleu);
+  border-radius: var(--rayon-m);
+  color: var(--bleu);
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .partenaires__grille { grid-template-columns: 1fr 1fr; gap: var(--espace-6); }
+}
+
+/* --- Équipe ----------------------------------------------------------------- */
+.fondateur {
+  display: flex;
+  gap: var(--espace-4);
+  align-items: flex-start;
+  padding: var(--espace-4);
+  border: 1px solid var(--filet);
+  border-radius: var(--rayon-l);
+}
+.fondateur > div:last-child { display: grid; gap: var(--espace-2); }
+.fondateur__photo {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  border-radius: var(--rayon-l);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.fondateur__photo img { width: 100%; height: 100%; object-fit: cover; }
+.fondateur__photo svg { width: 36px; height: 31px; }
+.fondateur__photo--cyber { background: var(--bleu-pale); fill: var(--bleu); }
+.fondateur__photo--ia { background: var(--violet-pale); fill: var(--violet); }
+
+@media (min-width: 900px) {
+  .fondateur { padding: var(--espace-5); }
+  .fondateur__photo { width: 120px; height: 120px; }
+}
+
+/* --- Contact ---------------------------------------------------------------- */
+.contact { display: grid; gap: var(--espace-5); align-items: start; }
+.contact__texte { display: grid; gap: var(--espace-3); }
+.contact__texte .surtitre { margin-bottom: calc(var(--espace-2) * -1); }
+.contact__coordonnees { display: grid; gap: var(--espace-3); margin: var(--espace-3) 0 0; }
+.contact__coordonnees li { display: grid; }
+.contact__coordonnees a { font-weight: 500; }
+
+@media (min-width: 1000px) {
+  .contact { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--espace-6); }
+}
+
+/* --- Apparition au défilement ----------------------------------------------- */
+/* Seuls les blocs encore hors de l'écran au chargement sont masqués
+   (classe ajoutée par js/apparition.js) : sans JavaScript, tout reste visible. */
+.apparition--attente {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.apparition--attente.apparition--visible { opacity: 1; transform: none; }

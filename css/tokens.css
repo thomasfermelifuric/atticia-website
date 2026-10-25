@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Atticia — variables de l'identité visuelle
+   Reprises du Design System Atticia. Modifiez une couleur ici : elle
+   change partout sur le site.
+   ========================================================================== */
+
+/* Poppins, auto-hébergée (aucun appel à un service tiers) */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/poppins-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/poppins-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/poppins-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/poppins-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/poppins-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/poppins-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* --- Thème clair (par défaut) --------------------------------------------- */
+:root {
+  --fond: #ffffff;          /* Blanc */
+  --fond-alt: #f3f5f9;      /* Brume */
+  --encre: #141c30;         /* Nuit, la couleur du logo */
+  --encre-douce: #555e75;   /* Ardoise */
+  --filet: #d6dbe6;         /* Acier, séparateurs décoratifs */
+  --contour: #737c92;       /* Bordure des champs */
+  --bleu: #2d5be3;          /* Bleu Atticia : actions, cybersécurité */
+  --bleu-pale: #e8eefd;
+  --violet: #6a4fdc;        /* Violet IA */
+  --violet-pale: #efebfd;
+  --sur-accent: #ffffff;    /* Texte sur un aplat bleu ou violet */
+  --erreur: #b4233d;        /* Messages d'erreur des formulaires */
+
+  --font: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 16px;
+  --espace-4: 24px;
+  --espace-5: 40px;
+  --espace-6: 64px;
+  --espace-7: 104px;        /* respiration entre grandes sections */
+
+  --rayon-s: 2px;
+  --rayon-m: 6px;
+  --rayon-l: 12px;
+
+  --largeur-max: 1200px;
+  --gouttiere: 24px;
+  --hauteur-entete: 76px;
+}
+
+/* --- Thème sombre (Nuit) : bandeaux, pied de page ------------------------ */
+[data-theme="sombre"] {
+  --fond: #141c30;
+  --fond-alt: #1c2640;
+  --encre: #eef1f7;
+  --encre-douce: #a6aec3;
+  --filet: #2f3b5a;
+  --contour: #6f7a96;
+  --bleu: #8ea7ff;
+  --bleu-pale: #22305e;
+  --violet: #b09dff;
+  --violet-pale: #2e2860;
+  --sur-accent: #141c30;
+}
+
+@media (min-width: 768px) {
+  :root { --gouttiere: 40px; }
+}
+@media (min-width: 1100px) {
+  :root { --gouttiere: 64px; }
+}

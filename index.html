@@ -1,42 +1,480 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atticia</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #f8f9fa;
-      color: #333;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1.25rem;
-      color: #6c757d;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atticia · Cybersécurité et IA pour les TPE et PME</title>
+  <meta name="description" content="Atticia accompagne les TPE et PME en cybersécurité et en intelligence artificielle : diagnostic, mise en conformité, sensibilisation, automatisation, et des outils conçus et hébergés en France.">
+  <meta name="theme-color" content="#141c30">
+
+  <!-- Partage sur les réseaux (LinkedIn, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Atticia · Cybersécurité et IA pour les TPE et PME">
+  <meta property="og:description" content="Conseil et outils en cybersécurité et IA, conçus et hébergés en France.">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/onglets.js" defer></script>
+  <script src="js/apparition.js" defer></script>
+  <script src="js/contact.js" defer></script>
 </head>
 <body>
 
-  <div>
-    <h1>Bienvenue</h1>
-    <p>Site web en construction, revenez bientôt</p>
-  </div>
+  <!-- Le triangle du logo, réutilisé comme puce et motif -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="triangle" viewBox="180 325.38 29.84 25.7">
+      <path d="M194.92,325.41c0-1.04,16.09,25.93,14.85,24.89,1.24,1.04-30.94,1.04-29.7,0-1.24,1.04,14.85-25.93,14.85-24.89Z"/>
+    </symbol>
+  </svg>
+
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <!-- ====================================================== EN-TÊTE ===== -->
+  <header class="entete" id="entete">
+    <div class="conteneur entete__barre">
+      <a class="entete__logo" href="#accueil" aria-label="Atticia, retour à l'accueil">
+        <img src="assets/logo/atticia-logo-nuit.svg" alt="Atticia" width="150" height="36">
+      </a>
+
+      <button class="entete__menu-bouton" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navigation" id="navigation" aria-label="Navigation principale">
+        <ul role="list" class="navigation__liste">
+          <li><a href="#offre">Notre offre</a></li>
+          <li><a href="#solutions">Nos solutions</a></li>
+          <li><a href="#partenaires">Devenir partenaire</a></li>
+          <li><a href="#equipe">Qui sommes-nous</a></li>
+        </ul>
+        <a class="bouton bouton--principal navigation__cta" href="#contact">Prendre rendez-vous</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- ==================================================== ACCUEIL ===== -->
+    <section class="accueil" id="accueil" data-theme="sombre" aria-labelledby="accueil-titre">
+      <div class="conteneur accueil__grille">
+        <div class="accueil__texte">
+          <p class="surtitre surtitre--cyber">Cybersécurité et IA pour les TPE et PME</p>
+          <h1 class="display" id="accueil-titre">Protégez votre entreprise.<br>Accélérez avec l'IA.</h1>
+          <p class="corps-large douce accueil__chapeau">
+            Atticia vous accompagne du diagnostic à la mise en place des solutions, avec des outils conçus et hébergés en France.
+          </p>
+          <div class="accueil__actions">
+            <a class="bouton bouton--principal" href="#contact">Prendre rendez-vous</a>
+            <a class="bouton bouton--secondaire" href="#offre">Découvrir notre offre</a>
+          </div>
+          <ul role="list" class="accueil__garanties">
+            <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg>Outils hébergés en France</li>
+            <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg>Référentiels NIST et ISO</li>
+            <li><svg class="puce puce--violet" aria-hidden="true"><use href="#triangle"/></svg>IA sans fuite de données</li>
+          </ul>
+        </div>
+
+        <div class="accueil__visuel" aria-hidden="true">
+          <svg viewBox="0 0 480 440" class="composition">
+            <rect class="composition__dalle" x="0" y="0" width="216" height="416" rx="2"/>
+            <rect class="composition__bleu" x="232" y="120" width="136" height="296" rx="2"/>
+            <rect class="composition__pale" x="384" y="0" width="96" height="200" rx="2"/>
+            <rect class="composition__violet" x="384" y="216" width="96" height="200" rx="2"/>
+            <g class="composition__triangles">
+              <use href="#triangle" x="96" y="180" width="24" height="21"/>
+              <use href="#triangle" x="80" y="210" width="24" height="21"/><use href="#triangle" x="112" y="210" width="24" height="21"/>
+              <use href="#triangle" x="64" y="240" width="24" height="21"/><use href="#triangle" x="96" y="240" width="24" height="21"/><use href="#triangle" x="128" y="240" width="24" height="21"/>
+              <use href="#triangle" x="48" y="270" width="24" height="21"/><use href="#triangle" x="80" y="270" width="24" height="21"/><use href="#triangle" x="112" y="270" width="24" height="21"/><use href="#triangle" x="144" y="270" width="24" height="21"/>
+              <use href="#triangle" x="32" y="300" width="24" height="21"/><use href="#triangle" x="64" y="300" width="24" height="21"/><use href="#triangle" x="96" y="300" width="24" height="21"/><use href="#triangle" x="128" y="300" width="24" height="21"/><use href="#triangle" x="160" y="300" width="24" height="21"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== ENJEUX ===== -->
+    <section class="section" id="enjeux" aria-labelledby="enjeux-titre">
+      <div class="conteneur">
+        <header class="section__entete apparition">
+          <p class="surtitre">Pourquoi agir maintenant</p>
+          <h2 class="titre-1" id="enjeux-titre">Les TPE et PME sont devenues des cibles</h2>
+          <p class="corps-large douce">
+            Moins équipées que les grands groupes, elles sont plus exposées aux attaques, tout en ayant beaucoup à gagner avec l'intelligence artificielle.
+          </p>
+        </header>
+
+        <ul role="list" class="grille-3">
+          <li class="carte apparition">
+            <span class="pastille pastille--cyber">Cyber</span>
+            <h3 class="titre-3">Des attaques plus nombreuses</h3>
+            <p class="douce">Phishing, fraude au président, rançongiciels : une seule erreur peut bloquer l'activité, coûter cher et entamer la confiance de vos clients.</p>
+          </li>
+          <li class="carte apparition">
+            <span class="pastille pastille--cyber">Conformité</span>
+            <h3 class="titre-3">Des obligations qui se renforcent</h3>
+            <p class="douce">RGPD, exigences des régulateurs pour les secteurs comme la banque et l'assurance : la non-conformité expose à des sanctions financières.</p>
+          </li>
+          <li class="carte apparition">
+            <span class="pastille pastille--ia">IA</span>
+            <h3 class="titre-3">Une opportunité à saisir, avec méthode</h3>
+            <p class="douce">L'IA peut accélérer et automatiser vos processus. Utilisée sans cadre, elle peut aussi exposer vos données.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================= CYBER × IA ===== -->
+    <section class="section section--alt" id="approche" aria-labelledby="approche-titre">
+      <div class="conteneur approche">
+        <div class="approche__texte apparition">
+          <p class="surtitre">Notre approche</p>
+          <h2 class="titre-1" id="approche-titre">Cyber et IA, indissociables</h2>
+          <p class="corps-large douce">
+            Les données sont au cœur des deux. Nous traitons l'IA avec une connaissance cyber, et la cyber avec une connaissance IA.
+          </p>
+          <div class="approche__colonnes">
+            <div>
+              <h3 class="titre-3"><span class="texte-ia">L'IA</span> a besoin de la cyber</h3>
+              <p class="douce">Un modèle s'appuie sur de grandes quantités de données qu'il faut stocker et protéger. Un usage non encadré peut provoquer des fuites.</p>
+            </div>
+            <div>
+              <h3 class="titre-3"><span class="texte-cyber">La cyber</span> a besoin de l'IA</h3>
+              <p class="douce">Filtres anti-spam, détection des menaces, attaques générées par IA : se défendre aujourd'hui demande de comprendre l'IA.</p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="approche__schema apparition" aria-label="Deux ensembles qui se croisent : la cybersécurité et l'IA, avec la protection des données au centre">
+          <svg viewBox="0 0 520 360" role="img" aria-hidden="true">
+            <defs><clipPath id="clip-cyber"><circle cx="180" cy="180" r="150"/></clipPath></defs>
+            <circle class="schema__cyber" cx="180" cy="180" r="150"/>
+            <circle class="schema__ia" cx="340" cy="180" r="150"/>
+            <circle class="schema__centre" cx="340" cy="180" r="150" clip-path="url(#clip-cyber)"/>
+            <text class="schema__titre schema__titre--cyber" x="110" y="138" text-anchor="middle">Cyber</text>
+            <text class="schema__mot" x="110" y="176" text-anchor="middle">Audit</text>
+            <text class="schema__mot" x="110" y="200" text-anchor="middle">Conformité</text>
+            <text class="schema__mot" x="110" y="224" text-anchor="middle">Sensibilisation</text>
+            <text class="schema__titre schema__titre--ia" x="410" y="138" text-anchor="middle">IA</text>
+            <text class="schema__mot" x="410" y="176" text-anchor="middle">Automatisation</text>
+            <text class="schema__mot" x="410" y="200" text-anchor="middle">Données</text>
+            <text class="schema__mot" x="410" y="224" text-anchor="middle">Chatbot local</text>
+            <text class="schema__mot schema__mot--centre" x="260" y="176" text-anchor="middle">Données</text>
+            <text class="schema__mot schema__mot--centre" x="260" y="198" text-anchor="middle">protégées</text>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ====================================================== OFFRE ===== -->
+    <section class="section" id="offre" aria-labelledby="offre-titre">
+      <div class="conteneur">
+        <header class="section__entete apparition">
+          <p class="surtitre">Notre offre</p>
+          <h2 class="titre-1" id="offre-titre">Du diagnostic à la mise en place</h2>
+          <p class="corps-large douce">
+            Une offre complète en deux temps. Vous connaissez déjà votre besoin, un outil ou une formation ? Nous passons directement à l'action.
+          </p>
+        </header>
+
+        <ol role="list" class="etapes">
+          <li class="etape apparition">
+            <span class="etape__numero">01</span>
+            <h3 class="titre-2">Diagnostic</h3>
+            <p class="douce">Entretiens et analyse de votre organisation. Vous recevez un rapport détaillé de vos forces, de vos faiblesses et des solutions à mettre en place.</p>
+            <ul role="list" class="liste-puces">
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span><strong>Cyber</strong> : évaluation de votre maturité humaine, organisationnelle et technique, selon les référentiels NIST et ISO.</span></li>
+              <li><svg class="puce puce--violet" aria-hidden="true"><use href="#triangle"/></svg><span><strong>IA</strong> : identification des processus à accélérer ou à automatiser, et des opportunités liées à vos données.</span></li>
+            </ul>
+          </li>
+          <li class="etape apparition">
+            <span class="etape__numero">02</span>
+            <h3 class="titre-2">Mise en place</h3>
+            <p class="douce">Nous déployons les recommandations avec vous, ou vous les mettez en œuvre en interne : vous choisissez.</p>
+            <ul role="list" class="liste-puces">
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Solutions humaines, organisationnelles et technologiques.</span></li>
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Nos propres outils, ou des solutions françaises et européennes sélectionnées.</span></li>
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Des partenaires spécialisés pour les missions pointues, comme les tests d'intrusion.</span></li>
+            </ul>
+          </li>
+        </ol>
+
+        <!-- Prestations, en onglets -->
+        <div class="prestations apparition">
+          <h3 class="titre-2 prestations__titre">Nos prestations</h3>
+          <div class="onglets" data-onglets>
+            <div class="onglets__liste" role="tablist" aria-label="Domaines de prestations">
+              <button class="onglet onglet--cyber" role="tab" id="onglet-cyber" aria-controls="panneau-cyber" aria-selected="true">Cybersécurité</button>
+              <button class="onglet onglet--ia" role="tab" id="onglet-ia" aria-controls="panneau-ia" aria-selected="false" tabindex="-1">Intelligence artificielle</button>
+            </div>
+
+            <div class="onglets__panneau" role="tabpanel" id="panneau-cyber" aria-labelledby="onglet-cyber" tabindex="0">
+              <ul role="list" class="grille-prestations">
+                <li><h4>Audit et analyse de risque</h4><p>Audit ISO, analyse de risque, priorisation des actions.</p></li>
+                <li><h4>Mise en conformité</h4><p>RGPD, exigences des secteurs réglementés comme la banque et l'assurance.</p></li>
+                <li><h4>Sensibilisation</h4><p>Phishing, ingénierie sociale, mots de passe : former vos équipes aux bons réflexes.</p></li>
+                <li><h4>Tests de phishing</h4><p>Campagnes simulées et régulières pour mesurer et faire progresser la vigilance.</p></li>
+                <li><h4>Politiques de sécurité</h4><p>Mots de passe, gestion des droits d'accès, processus de sécurité.</p></li>
+                <li><h4>Gestion des incidents</h4><p>Plan de gestion de crise, playbooks, exercices de simulation, plan de continuité.</p></li>
+              </ul>
+            </div>
+
+            <div class="onglets__panneau" role="tabpanel" id="panneau-ia" aria-labelledby="onglet-ia" tabindex="0" hidden>
+              <ul role="list" class="grille-prestations">
+                <li><h4>Sensibilisation à l'IA</h4><p>Protection des données, limites et risques de l'IA, deepfakes.</p></li>
+                <li><h4>Automatisation</h4><p>Identifier les processus qui peuvent être accélérés ou automatisés.</p></li>
+                <li><h4>Stratégie de la donnée</h4><p>Exploiter vos données, de la collecte aux modèles d'IA et à la visualisation.</p></li>
+                <li><h4>Solutions sur mesure</h4><p>Des outils d'IA conçus pour vos besoins, sans exposer vos données.</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Le cycle complet -->
+        <div class="cycle apparition">
+          <div class="cycle__texte">
+            <h3 class="titre-2">Nous couvrons tout le cycle</h3>
+            <p class="douce">Limiter les risques en amont, détecter une attaque quand elle survient, en limiter les dégâts et redémarrer vite.</p>
+          </div>
+          <ol role="list" class="cycle__etapes">
+            <li>Gouverner</li>
+            <li>Identifier</li>
+            <li>Protéger</li>
+            <li>Détecter</li>
+            <li>Répondre</li>
+            <li>Rétablir</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== SOLUTIONS ===== -->
+    <section class="section section--alt" id="solutions" aria-labelledby="solutions-titre">
+      <div class="conteneur">
+        <header class="section__entete apparition">
+          <p class="surtitre surtitre--ia">Développement</p>
+          <h2 class="titre-1" id="solutions-titre">Nos solutions, conçues en France</h2>
+          <p class="corps-large douce">
+            Nous développons nos propres outils à partir des besoins réels de nos clients, pour contribuer à la souveraineté numérique des entreprises françaises.
+          </p>
+        </header>
+
+        <ul role="list" class="grille-3">
+          <li class="carte carte--solution apparition">
+            <div class="carte__haut">
+              <span class="pastille pastille--ia">IA</span>
+              <span class="statut statut--dispo">Disponible</span>
+            </div>
+            <h3 class="titre-3">Chatbot local</h3>
+            <p class="douce">Un assistant qui s'appuie sur la documentation de votre entreprise, installé chez vous.</p>
+            <ul role="list" class="liste-puces liste-puces--compacte">
+              <li><svg class="puce puce--violet" aria-hidden="true"><use href="#triangle"/></svg><span>Aucune transmission dans le cloud</span></li>
+              <li><svg class="puce puce--violet" aria-hidden="true"><use href="#triangle"/></svg><span>Accès sécurisés</span></li>
+            </ul>
+          </li>
+          <li class="carte carte--solution apparition">
+            <div class="carte__haut">
+              <span class="pastille pastille--cyber">Cyber</span>
+              <span class="pastille pastille--ia">IA</span>
+              <span class="statut">En développement</span>
+            </div>
+            <h3 class="titre-3">Filtre anti-phishing</h3>
+            <p class="douce">Une extension pour votre messagerie, en complément de l'anti-spam existant.</p>
+            <ul role="list" class="liste-puces liste-puces--compacte">
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Modèle entraîné sur les mails réellement reçus par votre entreprise</span></li>
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Signalement en un clic</span></li>
+            </ul>
+          </li>
+          <li class="carte carte--solution apparition">
+            <div class="carte__haut">
+              <span class="pastille pastille--cyber">Cyber</span>
+              <span class="statut">En développement</span>
+            </div>
+            <h3 class="titre-3">Campagnes de phishing</h3>
+            <p class="douce">Des simulations régulières pour mesurer la vigilance de vos équipes et suivre leurs progrès.</p>
+            <ul role="list" class="liste-puces liste-puces--compacte">
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Campagnes programmées</span></li>
+              <li><svg class="puce puce--bleu" aria-hidden="true"><use href="#triangle"/></svg><span>Suivi de la maturité des collaborateurs</span></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================= PARTENAIRES ===== -->
+    <section class="section partenaires" id="partenaires" data-theme="sombre" aria-labelledby="partenaires-titre">
+      <div class="conteneur partenaires__grille">
+        <div class="apparition">
+          <p class="surtitre surtitre--cyber">Experts-comptables, ESN, conseils</p>
+          <h2 class="titre-1" id="partenaires-titre">Devenez notre partenaire</h2>
+          <p class="corps-large douce">
+            Vos clients vous parlent déjà de fraude, de RGPD et d'IA. Proposez-leur un accompagnement de confiance, et soyez rémunéré pour chaque mission.
+          </p>
+          <a class="bouton bouton--principal partenaires__cta" href="#contact" data-profil="partenaire">Échanger sur un partenariat</a>
+        </div>
+
+        <ol role="list" class="partenaires__etapes apparition">
+          <li>
+            <span class="partenaires__numero">1</span>
+            <div>
+              <h3 class="titre-3">Un premier échange</h3>
+              <p class="douce">Nous présentons notre offre et comprenons les besoins de vos clients.</p>
+            </div>
+          </li>
+          <li>
+            <span class="partenaires__numero">2</span>
+            <div>
+              <h3 class="titre-3">Une convention de partenariat</h3>
+              <p class="douce">Un cadre clair, avec une commission sur les missions de conseil.</p>
+            </div>
+          </li>
+          <li>
+            <span class="partenaires__numero">3</span>
+            <div>
+              <h3 class="titre-3">Vous recommandez, nous accompagnons</h3>
+              <p class="douce">Un interlocuteur unique pour la cyber et l'IA, et des points réguliers sur les nouveautés.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====================================================== ÉQUIPE ===== -->
+    <section class="section" id="equipe" aria-labelledby="equipe-titre">
+      <div class="conteneur">
+        <header class="section__entete apparition">
+          <p class="surtitre">Qui sommes-nous</p>
+          <h2 class="titre-1" id="equipe-titre">Deux frères, deux expertises complémentaires</h2>
+          <p class="corps-large douce">
+            Chacun sa spécialité, une formation commune qui nous permet d'intervenir sur les deux domaines.
+          </p>
+        </header>
+
+        <ul role="list" class="grille-2">
+          <!-- À COMPLÉTER : remplacez les initiales par une photo (<img>), le nom et le parcours -->
+          <li class="fondateur apparition">
+            <div class="fondateur__photo fondateur__photo--cyber" aria-hidden="true">
+              <svg><use href="#triangle"/></svg>
+            </div>
+            <div>
+              <p class="surtitre surtitre--cyber">Cybersécurité</p>
+              <h3 class="titre-3">Prénom Nom</h3>
+              <p class="douce">Cofondateur. Parcours, expériences et certifications en cybersécurité, sécurité de l'IA.</p>
+            </div>
+          </li>
+          <li class="fondateur apparition">
+            <div class="fondateur__photo fondateur__photo--ia" aria-hidden="true">
+              <svg><use href="#triangle"/></svg>
+            </div>
+            <div>
+              <p class="surtitre surtitre--ia">Intelligence artificielle</p>
+              <h3 class="titre-3">Prénom Nom</h3>
+              <p class="douce">Cofondateur. Parcours, expériences et projets en intelligence artificielle et en données.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================== CONTACT ===== -->
+    <section class="section section--alt" id="contact" aria-labelledby="contact-titre">
+      <div class="conteneur contact">
+        <div class="contact__texte apparition">
+          <p class="surtitre">Contact</p>
+          <h2 class="titre-1" id="contact-titre">Parlons de votre projet</h2>
+          <p class="corps-large douce">
+            Un premier échange de 30 minutes, sans engagement, pour faire le point sur vos besoins en cybersécurité et en IA.
+          </p>
+          <ul role="list" class="contact__coordonnees">
+            <li>
+              <span class="legende douce">E-mail</span>
+              <a href="mailto:contact@atticia.fr">contact@atticia.fr</a>
+            </li>
+            <li>
+              <span class="legende douce">LinkedIn</span>
+              <a href="https://www.linkedin.com/" rel="noopener" target="_blank">Atticia sur LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+
+        <form class="formulaire apparition" id="formulaire-contact" novalidate data-destinataire="contact@atticia.fr">
+          <div class="formulaire__ligne">
+            <div class="champ">
+              <label for="nom">Nom et prénom</label>
+              <input id="nom" name="nom" type="text" autocomplete="name" required>
+              <p class="champ__erreur" id="nom-erreur" hidden>Indiquez votre nom.</p>
+            </div>
+            <div class="champ">
+              <label for="entreprise">Entreprise</label>
+              <input id="entreprise" name="entreprise" type="text" autocomplete="organization">
+            </div>
+          </div>
+          <div class="formulaire__ligne">
+            <div class="champ">
+              <label for="email">E-mail professionnel</label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="nom@entreprise.fr">
+              <p class="champ__erreur" id="email-erreur" hidden>Indiquez une adresse e-mail valide.</p>
+            </div>
+            <div class="champ">
+              <label for="telephone">Téléphone <span class="douce">(facultatif)</span></label>
+              <input id="telephone" name="telephone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+          <fieldset class="champ champ--choix">
+            <legend>Vous êtes</legend>
+            <div class="choix">
+              <label><input type="radio" name="profil" value="Dirigeant ou salarié d'entreprise" checked> Une entreprise</label>
+              <label><input type="radio" name="profil" value="Futur partenaire (apporteur d'affaires)"> Un futur partenaire</label>
+              <label><input type="radio" name="profil" value="Autre"> Autre</label>
+            </div>
+          </fieldset>
+          <div class="champ">
+            <label for="message">Votre besoin</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Par exemple : nous recevons de plus en plus de mails de phishing et souhaitons former nos équipes."></textarea>
+            <p class="champ__erreur" id="message-erreur" hidden>Décrivez votre besoin en quelques mots.</p>
+          </div>
+          <button class="bouton bouton--principal formulaire__envoyer" type="submit">Envoyer ma demande</button>
+          <p class="formulaire__statut legende" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================== PIED DE PAGE ===== -->
+  <footer class="pied" data-theme="sombre">
+    <div class="conteneur pied__grille">
+      <div class="pied__marque">
+        <img src="assets/logo/atticia-logo-blanc.svg" alt="Atticia" width="150" height="36">
+        <p class="douce">Conseil et développement en cybersécurité et intelligence artificielle pour les TPE et PME.</p>
+      </div>
+      <nav aria-label="Plan du site">
+        <ul role="list" class="pied__liens">
+          <li><a href="#offre">Notre offre</a></li>
+          <li><a href="#solutions">Nos solutions</a></li>
+          <li><a href="#partenaires">Devenir partenaire</a></li>
+          <li><a href="#equipe">Qui sommes-nous</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul role="list" class="pied__liens">
+        <li><a href="mailto:contact@atticia.fr">contact@atticia.fr</a></li>
+        <li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+      </ul>
+    </div>
+    <div class="conteneur pied__bas">
+      <p class="legende douce">© <span data-annee>2026</span> Atticia. Tous droits réservés.</p>
+    </div>
+  </footer>
 
 </body>
 </html>

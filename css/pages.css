@@ -1,0 +1,14 @@
+/* ==========================================================================
+   Pages de texte (mentions légales, etc.)
+   ========================================================================== */
+
+.page-texte {
+  max-width: 760px;
+  display: grid;
+  gap: var(--espace-3);
+}
+.page-texte .surtitre { margin-bottom: calc(var(--espace-2) * -1); }
+.page-texte h1 { margin-bottom: var(--espace-4); }
+.page-texte h2 { margin-top: var(--espace-4); }
+.page-texte p { color: var(--encre-douce); }
+.pied .pied__bas > p { border-top: 0; }
