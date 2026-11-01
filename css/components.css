@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Composants : boutons, cartes, pastilles, puces, onglets, formulaire
+   Composants : boutons, cartes, pastilles, puces, formulaire
    ========================================================================== */
 
 /* --- Boutons ---------------------------------------------------------------- */
@@ -34,6 +34,7 @@
 }
 .puce--bleu { fill: var(--bleu); }
 .puce--violet { fill: var(--violet); }
+.puce--nuit { fill: var(--encre); }
 
 .liste-puces { display: grid; gap: var(--espace-3); margin: 0; }
 .liste-puces li { display: flex; gap: 12px; align-items: flex-start; }
@@ -84,28 +85,6 @@
 }
 .carte .pastille { justify-self: start; }
 .carte__haut { display: flex; align-items: center; gap: var(--espace-2); flex-wrap: wrap; }
-
-/* --- Onglets ---------------------------------------------------------------- */
-.onglets__liste {
-  display: flex;
-  gap: var(--espace-1);
-  border-bottom: 1px solid var(--filet);
-  margin-bottom: var(--espace-4);
-  overflow-x: auto;
-}
-.onglet {
-  padding: 12px var(--espace-3);
-  background: none;
-  border: 0;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--encre-douce);
-  cursor: pointer;
-  white-space: nowrap;
-}
-.onglet:hover { color: var(--encre); }
-.onglet--cyber[aria-selected="true"] { color: var(--bleu); box-shadow: inset 0 -2px 0 var(--bleu); }
-.onglet--ia[aria-selected="true"] { color: var(--violet); box-shadow: inset 0 -2px 0 var(--violet); }
 
 /* --- Formulaire ------------------------------------------------------------- */
 .formulaire {

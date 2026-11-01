@@ -160,7 +160,7 @@
   gap: var(--espace-5);
   padding-bottom: var(--espace-5);
 }
-.pied__marque { display: grid; gap: var(--espace-3); max-width: 360px; }
+.pied__marque { display: grid; align-content: start; gap: var(--espace-3); max-width: 360px; }
 .pied__marque img { width: 150px; height: auto; }
 .pied__liens { display: grid; align-content: start; gap: var(--espace-2); margin: 0; }
 .pied__liens a { color: var(--encre); text-decoration: none; }

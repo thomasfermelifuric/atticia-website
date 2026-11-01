@@ -15,7 +15,7 @@
   if (!formulaire) return;
 
   var statut = formulaire.querySelector(".formulaire__statut");
-  var destinataire = formulaire.getAttribute("data-destinataire") || "contact@atticia.fr";
+  var destinataire = formulaire.getAttribute("data-destinataire") || "contact@atticia.com";
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   var regles = {
