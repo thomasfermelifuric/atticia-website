@@ -83,8 +83,18 @@
       headers: { "Accept": "application/json" }
     })
       .then(function (reponse) {
-        return reponse.json().catch(function () { return { ok: false }; }).then(function (donnees) {
-          if (!reponse.ok || !donnees.ok) throw new Error(donnees.message || "");
+        return reponse.text().then(function (texte) {
+          var donnees = null;
+          try { donnees = JSON.parse(texte); } catch (err) { donnees = null; }
+          if (!donnees) {
+            // Le serveur n'a pas renvoyé la réponse attendue : PHP absent, fichier introuvable…
+            console.error("[Atticia] contact.php n'a pas répondu en JSON. Statut HTTP " + reponse.status + ". Début de la réponse :", texte.slice(0, 300));
+            throw new Error("");
+          }
+          if (!reponse.ok || !donnees.ok) {
+            if (donnees.detail) console.error("[Atticia] " + donnees.detail);
+            throw new Error(donnees.message || "");
+          }
           return donnees;
         });
       })
