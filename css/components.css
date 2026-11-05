@@ -133,4 +133,11 @@
 .choix input { width: 18px; height: 18px; accent-color: var(--bleu); margin: 0; }
 
 .formulaire__envoyer { justify-self: start; }
+.formulaire__statut { font-size: 15px; line-height: 24px; font-weight: 500; }
 .formulaire__statut:empty { display: none; }
+.formulaire__statut:focus { outline: none; }
+.formulaire__statut--succes { padding: 12px var(--espace-3); background: var(--bleu-pale); color: var(--encre); border-radius: var(--rayon-s); }
+.formulaire__statut--erreur { color: var(--erreur); }
+
+/* Champ piège anti-spam : hors de l'écran, invisible pour les visiteurs */
+.champ-piege { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

@@ -13,7 +13,39 @@
   <meta property="og:description" content="Conseil et solutions en cybersécurité et intelligence artificielle, conçues et hébergées en France.">
   <meta property="og:locale" content="fr_FR">
 
+  <!-- Icônes : Google utilise les PNG/ICO (il n'affiche pas le SVG dans ses résultats) -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/favicon-192x192.png" type="image/png" sizes="192x192">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Données structurées : nom et logo de l'entreprise pour Google.
+       À VÉRIFIER : remplacez https://atticia.com si votre adresse est différente (ex. avec www). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Atticia",
+    "url": "https://atticia.com/",
+    "logo": "https://atticia.com/assets/logo/atticia-logo-carre-512.png",
+    "email": "contact@atticia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "47 rue Voltaire",
+      "postalCode": "92300",
+      "addressLocality": "Levallois-Perret",
+      "addressCountry": "FR"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Atticia",
+    "url": "https://atticia.com/"
+  }
+  </script>
   <link rel="preload" href="assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -235,7 +267,13 @@
           </ul>
         </div>
 
-        <form class="formulaire apparition" id="formulaire-contact" novalidate data-destinataire="contact@atticia.com">
+        <form class="formulaire apparition" id="formulaire-contact" action="contact.php" method="post" novalidate data-destinataire="contact@atticia.com">
+          <!-- Anti-spam : champ invisible (les robots le remplissent) et heure d'affichage de la page -->
+          <div class="champ-piege" aria-hidden="true">
+            <label for="site_web">Ne pas remplir ce champ</label>
+            <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="affiche_le" value="">
           <div class="formulaire__ligne">
             <div class="champ">
               <label for="nom">Nom et prénom</label>
@@ -272,7 +310,7 @@
             <p class="champ__erreur" id="message-erreur" hidden>Décrivez votre besoin en quelques mots.</p>
           </div>
           <button class="bouton bouton--principal formulaire__envoyer" type="submit">Envoyer ma demande</button>
-          <p class="formulaire__statut legende" role="status" aria-live="polite"></p>
+          <p class="formulaire__statut" role="status" aria-live="polite" tabindex="-1"></p>
         </form>
       </div>
     </section>

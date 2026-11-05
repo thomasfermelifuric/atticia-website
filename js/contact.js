@@ -2,11 +2,8 @@
    Formulaire de contact
    - vérifie les champs obligatoires et affiche les erreurs à côté du champ ;
    - présélectionne « futur partenaire » depuis la section Partenaires ;
-   - envoi : ouvre la messagerie du visiteur avec un e-mail prérempli.
-
-   À FAIRE avant la mise en ligne : brancher un vrai service d'envoi
-   (voir README.md, section « Formulaire de contact »). Il suffira alors de
-   remplacer la fonction envoyer() ci-dessous.
+   - envoie la demande à contact.php, qui transmet un e-mail à l'adresse
+     contact (voir README.md, section « Formulaire de contact »).
    ========================================================================== */
 (function () {
   "use strict";
@@ -15,8 +12,15 @@
   if (!formulaire) return;
 
   var statut = formulaire.querySelector(".formulaire__statut");
-  var destinataire = formulaire.getAttribute("data-destinataire") || "contact@atticia.com";
+  var bouton = formulaire.querySelector(".formulaire__envoyer");
+  var libelleBouton = bouton.textContent;
+  var adresse = formulaire.getAttribute("data-destinataire") || "contact@atticia.com";
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var envoiEnCours = false;
+
+  // Heure d'affichage de la page : contact.php écarte les envois trop rapides (robots)
+  var horodatage = formulaire.elements.affiche_le;
+  if (horodatage) horodatage.value = String(Date.now());
 
   var regles = {
     nom: function (v) { return v.trim().length > 1; },
@@ -37,6 +41,12 @@
     return valide;
   }
 
+  function afficherStatut(texte, type) {
+    statut.textContent = texte;
+    statut.classList.toggle("formulaire__statut--succes", type === "succes");
+    statut.classList.toggle("formulaire__statut--erreur", type === "erreur");
+  }
+
   // L'erreur disparaît dès que le visiteur corrige le champ
   Object.keys(regles).forEach(function (nom) {
     formulaire.elements[nom].addEventListener("input", function () {
@@ -52,26 +62,10 @@
     });
   });
 
-  function envoyer(donnees) {
-    var sujet = "Demande de contact — " + (donnees.entreprise || donnees.nom);
-    var corps = [
-      "Nom : " + donnees.nom,
-      "Entreprise : " + (donnees.entreprise || "—"),
-      "E-mail : " + donnees.email,
-      "Téléphone : " + (donnees.telephone || "—"),
-      "Profil : " + donnees.profil,
-      "",
-      donnees.message
-    ].join("\n");
-
-    window.location.href = "mailto:" + destinataire +
-      "?subject=" + encodeURIComponent(sujet) +
-      "&body=" + encodeURIComponent(corps);
-  }
-
   formulaire.addEventListener("submit", function (e) {
     e.preventDefault();
-    statut.textContent = "";
+    if (envoiEnCours) return;
+    afficherStatut("", null);
 
     var invalides = Object.keys(regles).filter(function (nom) { return !verifierChamp(nom); });
     if (invalides.length) {
@@ -79,16 +73,37 @@
       return;
     }
 
-    var f = formulaire.elements;
-    envoyer({
-      nom: f.nom.value.trim(),
-      entreprise: f.entreprise.value.trim(),
-      email: f.email.value.trim(),
-      telephone: f.telephone.value.trim(),
-      profil: formulaire.querySelector('input[name="profil"]:checked').value,
-      message: f.message.value.trim()
-    });
+    envoiEnCours = true;
+    bouton.textContent = "Envoi en cours…";
+    bouton.setAttribute("aria-busy", "true");
 
-    statut.textContent = "Votre messagerie s'ouvre avec votre demande préremplie. Il ne vous reste qu'à l'envoyer.";
+    fetch(formulaire.getAttribute("action") || "contact.php", {
+      method: "POST",
+      body: new FormData(formulaire),
+      headers: { "Accept": "application/json" }
+    })
+      .then(function (reponse) {
+        return reponse.json().catch(function () { return { ok: false }; }).then(function (donnees) {
+          if (!reponse.ok || !donnees.ok) throw new Error(donnees.message || "");
+          return donnees;
+        });
+      })
+      .then(function (donnees) {
+        formulaire.reset();
+        if (horodatage) horodatage.value = String(Date.now());
+        afficherStatut(donnees.message || "Merci, votre demande a bien été envoyée.", "succes");
+      })
+      .catch(function (erreur) {
+        afficherStatut(
+          erreur.message || ("Votre demande n'a pas pu être envoyée. Écrivez-nous directement à " + adresse + "."),
+          "erreur"
+        );
+      })
+      .then(function () {
+        envoiEnCours = false;
+        bouton.textContent = libelleBouton;
+        bouton.removeAttribute("aria-busy");
+        statut.focus();
+      });
   });
 })();
