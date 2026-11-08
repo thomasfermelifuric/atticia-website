@@ -2,8 +2,7 @@
    Formulaire de contact
    - vérifie les champs obligatoires et affiche les erreurs à côté du champ ;
    - présélectionne « futur partenaire » depuis la section Partenaires ;
-   - envoie la demande à contact.php, qui transmet un e-mail à l'adresse
-     contact (voir README.md, section « Formulaire de contact »).
+   - envoie la demande à l'API Web3Forms.
    ========================================================================== */
 (function () {
   "use strict";
@@ -14,17 +13,14 @@
   var statut = formulaire.querySelector(".formulaire__statut");
   var bouton = formulaire.querySelector(".formulaire__envoyer");
   var libelleBouton = bouton.textContent;
-  var adresse = formulaire.getAttribute("data-destinataire") || "contact@atticia.com";
-  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var envoiEnCours = false;
 
-  // Heure d'affichage de la page : contact.php écarte les envois trop rapides (robots)
   var horodatage = formulaire.elements.affiche_le;
   if (horodatage) horodatage.value = String(Date.now());
 
   var regles = {
     nom: function (v) { return v.trim().length > 1; },
-    email: function (v) { return EMAIL.test(v.trim()); },
+    email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
     message: function (v) { return v.trim().length > 4; }
   };
 
@@ -77,39 +73,31 @@
     bouton.textContent = "Envoi en cours…";
     bouton.setAttribute("aria-busy", "true");
 
-    fetch(formulaire.getAttribute("action") || "contact.php", {
+    fetch(formulaire.getAttribute("action"), {
       method: "POST",
       body: new FormData(formulaire),
       headers: { "Accept": "application/json" }
     })
       .then(function (reponse) {
-        return reponse.text().then(function (texte) {
-          var donnees = null;
-          try { donnees = JSON.parse(texte); } catch (err) { donnees = null; }
-          if (!donnees) {
-            // Le serveur n'a pas renvoyé la réponse attendue : PHP absent, fichier introuvable…
-            console.error("[Atticia] contact.php n'a pas répondu en JSON. Statut HTTP " + reponse.status + ". Début de la réponse :", texte.slice(0, 300));
-            throw new Error("");
-          }
-          if (!reponse.ok || !donnees.ok) {
-            if (donnees.detail) console.error("[Atticia] " + donnees.detail);
-            throw new Error(donnees.message || "");
-          }
-          return donnees;
-        });
+        return reponse.json();
       })
       .then(function (donnees) {
-        formulaire.reset();
-        if (horodatage) horodatage.value = String(Date.now());
-        afficherStatut(donnees.message || "Merci, votre demande a bien été envoyée.", "succes");
+        if (donnees.success) {
+          formulaire.reset();
+          if (horodatage) horodatage.value = String(Date.now());
+          afficherStatut("Merci et à bientôt !", "succes");
+        } else {
+          throw new Error(donnees.message || "Erreur Web3Forms");
+        }
       })
       .catch(function (erreur) {
+        console.error("[Atticia] Erreur lors de l'envoi Web3Forms :", erreur);
         afficherStatut(
-          erreur.message || ("Votre demande n'a pas pu être envoyée. Écrivez-nous directement à " + adresse + "."),
+          "Une erreur est survenue. Si vous le souhaitez, vous pouvez nous contacter directement par email.",
           "erreur"
         );
       })
-      .then(function () {
+      .finally(function () {
         envoiEnCours = false;
         bouton.textContent = libelleBouton;
         bouton.removeAttribute("aria-busy");
