@@ -86,7 +86,6 @@
           <li><a href="#convictions">Nos convictions</a></li>
           <li><a href="#offre">Notre offre</a></li>
           <li><a href="#solutions">Nos solutions</a></li>
-          <li><a href="#partenaires">Devenir partenaire</a></li>
         </ul>
         <a class="bouton bouton--principal navigation__cta" href="#contact">Prendre rendez-vous</a>
       </nav>
@@ -267,51 +266,54 @@
           </ul>
         </div>
 
-        <form class="formulaire apparition" id="formulaire-contact" action="contact.php" method="post" novalidate data-destinataire="contact@atticia.com">
-          <!-- Anti-spam : champ invisible (les robots le remplissent) et heure d'affichage de la page -->
-          <div class="champ-piege" aria-hidden="true">
-            <label for="site_web">Ne pas remplir ce champ</label>
-            <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <input type="hidden" name="affiche_le" value="">
-          <div class="formulaire__ligne">
-            <div class="champ">
-              <label for="nom">Nom et prénom</label>
-              <input id="nom" name="nom" type="text" autocomplete="name" required>
-              <p class="champ__erreur" id="nom-erreur" hidden>Indiquez votre nom.</p>
-            </div>
-            <div class="champ">
-              <label for="entreprise">Entreprise</label>
-              <input id="entreprise" name="entreprise" type="text" autocomplete="organization">
-            </div>
-          </div>
-          <div class="formulaire__ligne">
-            <div class="champ">
-              <label for="email">E-mail professionnel</label>
-              <input id="email" name="email" type="email" autocomplete="email" required placeholder="nom@entreprise.fr">
-              <p class="champ__erreur" id="email-erreur" hidden>Indiquez une adresse e-mail valide.</p>
-            </div>
-            <div class="champ">
-              <label for="telephone">Téléphone <span class="douce">(facultatif)</span></label>
-              <input id="telephone" name="telephone" type="tel" autocomplete="tel">
-            </div>
-          </div>
-          <fieldset class="champ champ--choix">
-            <legend>Vous êtes</legend>
-            <div class="choix">
-              <label><input type="radio" name="profil" value="Dirigeant ou salarié d'entreprise" checked> Une entreprise</label>
-              <label><input type="radio" name="profil" value="Futur partenaire (apporteur d'affaires)"> Un futur partenaire</label>
-              <label><input type="radio" name="profil" value="Autre"> Autre</label>
-            </div>
-          </fieldset>
-          <div class="champ">
-            <label for="message">Votre besoin</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Par exemple : nous recevons de plus en plus de mails de phishing et souhaitons former nos équipes."></textarea>
-            <p class="champ__erreur" id="message-erreur" hidden>Décrivez votre besoin en quelques mots.</p>
-          </div>
-          <button class="bouton bouton--principal formulaire__envoyer" type="submit">Envoyer ma demande</button>
-          <p class="formulaire__statut" role="status" aria-live="polite" tabindex="-1"></p>
-        </form>
+        <form class="formulaire apparition" id="formulaire-contact" action="https://api.web3forms.com/submit" method="POST" novalidate>
+         
+         <!-- Clé d'accès Web3Forms -->
+         <input type="hidden" name="access_key" value="f161ffd1-bd4e-4d70-a631-a89b17baa4da">
+
+         <!-- Anti-spam : champ invisible (les robots le remplissent) et heure d'affichage de la page -->
+         <div class="champ-piege" aria-hidden="true">
+           <label for="site_web">Ne pas remplir ce champ</label>
+           <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off">
+         </div>
+         <input type="hidden" name="affiche_le" value="">
+
+         <!-- Optionnel : Personnaliser l'objet de l'e-mail reçu -->
+         <input type="hidden" name="subject" value="Nouveau message depuis le site Atticia">
+
+         <div class="formulaire__ligne">
+           <div class="champ">
+             <label for="nom">Nom et prénom</label>
+             <input id="nom" name="nom" type="text" autocomplete="name" required>
+             <p class="champ__erreur" id="nom-erreur" hidden>Indiquez votre nom.</p>
+           </div>
+           <div class="champ">
+             <label for="entreprise">Entreprise</label>
+             <input id="entreprise" name="entreprise" type="text" autocomplete="organization">
+           </div>
+         </div>
+
+         <div class="formulaire__ligne">
+           <div class="champ">
+             <label for="email">E-mail professionnel</label>
+             <input id="email" name="email" type="email" autocomplete="email" required placeholder="nom@entreprise.fr">
+             <p class="champ__erreur" id="email-erreur" hidden>Indiquez une adresse e-mail valide.</p>
+           </div>
+           <div class="champ">
+             <label for="telephone">Téléphone <span class="douce">(facultatif)</span></label>
+             <input id="telephone" name="telephone" type="tel" autocomplete="tel">
+           </div>
+         </div>
+
+         <div class="champ">
+           <label for="message">Votre besoin</label>
+           <textarea id="message" name="message" rows="5" required placeholder="Par exemple : nous recevons de plus en plus de mails de phishing et souhaitons former nos équipes."></textarea>
+           <p class="champ__erreur" id="message-erreur" hidden>Décrivez votre besoin en quelques mots.</p>
+         </div>
+
+         <button class="bouton bouton--principal formulaire__envoyer" type="submit">Envoyer ma demande</button>
+         <p class="formulaire__statut" role="status" aria-live="polite" tabindex="-1"></p>
+       </form>
       </div>
     </section>
   </main>
@@ -328,7 +330,6 @@
           <li><a href="#convictions">Nos convictions</a></li>
           <li><a href="#offre">Notre offre</a></li>
           <li><a href="#solutions">Nos solutions</a></li>
-          <li><a href="#partenaires">Devenir partenaire</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
