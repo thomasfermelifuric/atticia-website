@@ -59,6 +59,22 @@
   <script src="js/navigation.js" defer></script>
   <script src="js/apparition.js" defer></script>
   <script src="js/contact.js" defer></script>
+
+  <!-- Bandeau d'accueil : grand A du symbole en fond, à droite du texte -->
+  <style>
+    .accueil { position: relative; overflow: hidden; isolation: isolate; }
+    .accueil > .conteneur { position: relative; z-index: 1; }
+    .accueil__motif { display: none; }
+    @media (min-width: 1100px) {
+      .accueil__motif {
+        display: block; position: absolute; z-index: 0; pointer-events: none;
+        right: 2%; bottom: 0; transform: translateY(8%); width: clamp(420px, 46vw, 820px); height: auto; aspect-ratio: 186 / 144;
+      }
+      .accueil__motif .grand-a { fill: var(--fond-alt); }
+      .accueil__motif .coeur { fill: var(--violet); }
+      .accueil__texte { max-width: min(760px, 54%); }
+    }
+  </style>
 </head>
 <body>
 
@@ -97,6 +113,10 @@
 
     <!-- ==================================================== ACCUEIL ===== -->
     <section class="accueil" id="accueil" data-theme="sombre" aria-labelledby="accueil-titre">
+      <svg class="accueil__motif" viewBox="102 226 186 144" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
+        <path class="grand-a" d="M194.92,279.52l53.73,90.05h39.09l-84.62-141.8c-.46-.77-1.18-1.31-2-1.5-4.1-.94-8.32-.94-12.41,0-.82.19-1.53.73-2,1.5l-84.62,141.8h39.09l53.73-90.05Z"/>
+        <path class="coeur" d="M194.92,325.41c0-1.04,16.09,25.93,14.85,24.89,1.24,1.04-30.94,1.04-29.7,0-1.24,1.04,14.85-25.93,14.85-24.89Z"/>
+      </svg>
       <div class="conteneur">
         <div class="accueil__texte">
           <h1 class="display accueil__titre" id="accueil-titre">Votre partenaire cyber et IA</h1>
